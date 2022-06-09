@@ -187,10 +187,12 @@ if __name__ == "__main__":
                 Imprime los nodos nodos asignados y muestra el recorrido.
         
         '''
-        
+        print("Los puntos turisticos de Santo Domingo de su posible interes son los siguientes: ")
+        nodo_inicio = int(input("Ingrese un punto el punto Turistico al que se encuentra: "))
+        nodo_objetivo =int(input("Ingrese un punto el punto Turistico al que se se dirije: "))
         # Crea una instancia de la clase "Grafo"
         # Este grafo es no dirigido y tiene 5 nodos
-        g = Grafo(6, dirigido=False)
+        g = Grafo(13, dirigido=False)
     
         # Agrega las aristas del grafo
         g.agregar_arista(0,1)# Agrega la arista (0,1) con peso=1
@@ -203,6 +205,16 @@ if __name__ == "__main__":
         g.agregar_arista(3, 4)
         g.agregar_arista(3, 5)
         g.agregar_arista(4, 5)
+        g.agregar_arista(4,7)# Agrega la arista (0,1) con peso=1
+        g.agregar_arista(4,8)# Agrega la arista (0,2) con peso=1
+        g.agregar_arista(5,9)# Agrega la arista (1,2) con peso=1
+        g.agregar_arista(5,10)# Agrega la arista (1,4) con peso=1
+        g.agregar_arista(6,12)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(7,9)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(9,12)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(10, 12)
+        g.agregar_arista(10, 11)
+        g.agregar_arista(11, 12)
     
         # Imprime la lista de adyacencia en el formulario del nodo
         g.imprimir_lista_adyacencia()
@@ -211,5 +223,5 @@ if __name__ == "__main__":
                     #" (empezando por el vértice 0)")
     
         camino_objetivo = []#
-        camino_objetivo = g.bfs(0, 5)#
+        camino_objetivo = g.bfs(nodo_inicio, nodo_objetivo)#
         print(camino_objetivo)#
