@@ -53,7 +53,7 @@ def ducha ():
                 #Explicacion del error
                 print("Debes ingresar bien los datos")
                 continue
-            Si valor de ducha es diferente al valor estavlecido manda alerta
+            #Si valor de ducha es diferente al valor estavlecido manda alerta
             if (ducha != "Ducha1" or ducha != "Ducha2" or ducha != "Ducha3" or ducha != "Ducha4" or ducha != "Ducha5"
             or ducha != "Ducha6" or ducha != "Ducha7" or estado != "1" or estado != "0"):
                 #Alerta por ingresar mal un requerimiento 
