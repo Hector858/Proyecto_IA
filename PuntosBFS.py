@@ -1,8 +1,5 @@
 #Se incorpora la librería
-from ast import Break
-from asyncio.windows_events import NULL
 from queue import Queue
-from re import L
 
 #Se crea la clase Mapa
 class Grafo:
@@ -18,6 +15,8 @@ class Grafo:
             indica el número de nodos que va a llevar el grafo
         dirigido : boolean
             Si el grafo se encuentra en dirigido (True) o no dirigido (False)
+        diccionario: list
+                Almacena el listado de los puntos de interes
             
         nodo1 : int 
             Nodo 1 o de inicio
@@ -29,9 +28,11 @@ class Grafo:
             Este atributo puede tener un valor opcional (proporcionado por uno mismo)
         nodo_inicio : int  
             Nodo inicial del recorrido
+        nodo_objetivo: int
+                Nodo al que se dirije el recorrido
         Métodos
         -------
-        __init__(self, numero_de_nodos, dirigido=Treu):
+        __init__(self, numero_de_nodos, diccionario, dirigido=Treu):
                 Constructor de la clase Grafo
         
                 Crea el diccionario de la lista de adyacencia seteando cada nodo.
@@ -44,10 +45,12 @@ class Grafo:
         
                 Imprime la lista de adyacencia de los nodos por cada una de sus llaves.
         
-        def bfs_traversal(self, iniciar_nodo):
+        def bfs(self, iniciar_nodo):
                 Método que permite recorrer el grafo en anchura.
         
                 Genera colas y listas de nodos visitados.
+                
+                Establece el camino para llegar al objetivo
         Main
          -------- 
          __main__
@@ -67,9 +70,11 @@ class Grafo:
                     Parámetros: 
                     ----------
                     numero_nodos: int   
-                    Número de nodos que posee el grafo
+                        Número de nodos que posee el grafo
                    dirigido: boolean 
-                    Si el grafo es dirigido (true) o no dirigido (false)
+                        Si el grafo es dirigido (true) o no dirigido (false)
+                   diccionario: list
+                        Almacena el listado de los puntos de interes
                 '''
                 self.m_diccionario = diccionario
                 self.m_numero_de_nodos = numero_de_nodos#El número de nodos
@@ -128,14 +133,18 @@ class Grafo:
         # Función que imprime el recorrido BFS
         def bfs(self, nodo_inicio, nodo_objetivo):#
                 '''
-        Método que realiza un recorrido del grafo en anchura.
+                Método que realiza un recorrido del grafo en anchura.
         
-        Genera colas y listas de nodos visitados.
+                Genera colas y listas de nodos visitados.
         
-            Parámetros:
-            ----------
-            nodo_inicio : int  
-                Nodo inicial del recorrido
+                Establece el camino para llegar al objetivo
+        
+                Parámetros:
+                ----------
+                nodo_inicio : int  
+                        Nodo inicial del recorrido
+                nodo_objetivo: int
+                        Nodo al que se dirije el recorrido
         '''
                 #Inicializa la lista de los nodos visitados
                 #Conjunto vacío de nodos visitados
@@ -149,38 +158,48 @@ class Grafo:
                 visitado.add(nodo_inicio)
                 
                 # el nodo de inicio no tiene padres
-                padre=dict()#
-                padre[nodo_inicio]=None#
-                
-                camino_encontrado = False#
+                padre=dict()#Se define el nodo padre de tipo mapa que asocia claves y valores
+                #No tiene nodo padre el nodo de inicio
+                padre[nodo_inicio]=None
+                #El camino esta vacio
+                camino_encontrado = False
         
                 #Realiza un bucle mientras la cola no este vacía
                 while not cola.empty():
                         # Saca el primer nodo de la cola
                         nodo_actual = cola.get()
-                        #Imprime el nodo actual
+                        #Imprime el diccionario del nodo actual
                         print(diccionario[nodo_actual], end = "\n ") 
-                        
-                        if nodo_actual == nodo_objetivo:#
-                                camino_encontrado = True#
-                                break#
-                # Realiza un recorrido de toda la lista de adyacencia del nodo actual para el siguiente nodo
+                        #Si el nodo actual es el nodo objetivo se acaba la busqueda
+                        if nodo_actual == nodo_objetivo:
+                                #indica que se acabo la busqueda
+                                camino_encontrado = True
+                                break#cierra el bucle
+                        # Realiza un recorrido de toda la lista de adyacencia del nodo actual para el siguiente nodo
                         for (siguiente_nodo, peso) in self.m_lista_adyacencia[nodo_actual]:
-                        #indica que si el nodo siguiente no ha sido visitado
+                                #indica que si el nodo siguiente no ha sido visitado
                                 if siguiente_nodo not in visitado:
-                        #Coloca el siguiente nodo a la cola
+                                        #Coloca el siguiente nodo a la cola
                                         cola.put(siguiente_nodo)
                                         padre[siguiente_nodo] = nodo_actual#
-                        #Agregar el siguiente nodo a la lista de nodos visitados
+                                        #Agregar el siguiente nodo a la lista de nodos visitados
                                         visitado.add(siguiente_nodo)
                 #Reconstrucción de ruta
-                objetivo=[]#
-                if camino_encontrado:#
-                        objetivo.append(nodo_objetivo)#
-                        while padre[nodo_objetivo] is not None:#
+                objetivo=[]#Lista del objetivo
+                #Si el camino encontrado se ecuentra
+                if camino_encontrado:
+                        #Se agrega el nodo objetivo
+                        objetivo.append(nodo_objetivo)
+                        #Mientras el nodo padre no sea el nodo objetivo
+                        while padre[nodo_objetivo] is not None:
+                                #Se agrega el nodo al lista el nodo padre
                                 objetivo.append(padre[nodo_objetivo])#
+                                #Se define el nodo obejtivo como el padre
                                 nodo_objetivo=padre[nodo_objetivo]#
-                        objetivo.reverse()#
+                        #Realiza un proceso de reversapara rastear el camino hasta el nodo inicio
+                        #Y crear el camino desde el inicio hasta el objetivo
+                        objetivo.reverse()
+                #Retorna el objetivo
                 return objetivo#   
 #Main de la clase
 if __name__ == "__main__":
@@ -188,9 +207,11 @@ if __name__ == "__main__":
         '''
                 Main de la clase Grafo.
         
-                Imprime los nodos nodos asignados y muestra el recorrido.
+                Imprime el diccionario con el recorrido y muestra el recorrido y el camino
+                más para llegar al objetivo
         
         '''
+        #Se define los valores del diccionario que va a llevar cada numero
         diccionario = {0:"Parque Acuático el Pulpo de Santo",1:"Balneario Las Vegas de Julio Moreno",
                        2:"Río Aquepí",3:"Parque acuatico El Pulpo",4:"Tinalandia Lodge",5:"Río Otongo",
                        6:"Río Mapalí",7:"Awakenings Ayahuasca Retreats",8:"Tolón Pelé",9:"San Gabriel del Baba",
@@ -212,56 +233,65 @@ if __name__ == "__main__":
         print("Monumento Monseñor Emilio Sthele: 15  Parque Natural Jelén Tenka:  16")
         print("Río Cajones Chico: 17  Jardín Botánico Padre Julio Marrero:  18")
         print("Santo Domingo de los Tsáchilas La Concordia: 19")
-        #Pide los puntos
+        #Realiza un bucle para ingresar bien los datos
         while True:
+                #Implementa un try except para evitar que se ingresn otro tipo de datos
+                #o se salten el ingreso
                 try:
+                        #ingresa el punto de inicio
                         nodo_inicio = int(input("Ingrese un punto el punto Turistico al que se encuentra: "))
+                        #Ingresa el punto objetivo
                         nodo_objetivo =int(input("Ingrese un punto el punto Turistico al que se se dirije: "))
+                        #Lo que debe de realiza en caso de la excepcion
                 except ValueError:
-                        print("Debes escribir un número. Intente De nuevo")
+                        print("Debes escribir un número dentro del Rango. Intente De nuevo")
+                        #Continua con el proceso
                         continue
-                
-                if (nodo_inicio>=0 and nodo_inicio<=19) and (nodo_objetivo>=0 and nodo_objetivo<=19):
-                        print("Haz colocado mal un punto")
-                        break
+                #Condición para no pasar del rango de números
+                if (nodo_inicio<=0 or nodo_inicio>=19 or nodo_objetivo<=0 or nodo_objetivo>=19):
+                        #Indica que esta fuera del rango
+                        print("Numero fuera de rango")
+                        continue
+                else:
+                        break#Cierra el ciclo
     
         # Agrega las aristas del grafo
-        g.agregar_arista(0,1)# Agrega la arista (0,1) con peso=1
-        g.agregar_arista(0,2)# Agrega la arista (0,2) con peso=1
-        g.agregar_arista(0,3)# Agrega la arista (1,2) con peso=1
-        g.agregar_arista(1,5)# Agrega la arista (1,4) con peso=1
-        g.agregar_arista(1,8)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(2,6)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(3,4)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(3, 9)
-        g.agregar_arista(4, 9)
-        g.agregar_arista(5, 7)
-        g.agregar_arista(4,7)# Agrega la arista (0,1) con peso=1
-        g.agregar_arista(6,7)# Agrega la arista (0,2) con peso=1
-        g.agregar_arista(6,8)# Agrega la arista (1,2) con peso=1
-        g.agregar_arista(7,8)# Agrega la arista (1,4) con peso=1
-        g.agregar_arista(8,9)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(7,9)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(9,10)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(10, 11)
-        g.agregar_arista(10, 12)
-        g.agregar_arista(10, 13)
-        g.agregar_arista(11, 12)
-        g.agregar_arista(11, 14)
-        g.agregar_arista(12, 13)
-        g.agregar_arista(12, 15)
-        g.agregar_arista(13, 16)
-        g.agregar_arista(14, 15)
-        g.agregar_arista(14, 17)
-        g.agregar_arista(14, 18)
-        g.agregar_arista(15, 16)
-        g.agregar_arista(15, 19)
-        g.agregar_arista(16, 19)
+        g.agregar_arista(0,1)# Agrega la arista (0,1)
+        g.agregar_arista(0,2)# Agrega la arista (0,2)
+        g.agregar_arista(0,3)# Agrega la arista (0,3)
+        g.agregar_arista(1,5)# Agrega la arista (1,5)
+        g.agregar_arista(1,8)# Agrega la arista (1,8)
+        g.agregar_arista(2,6)# Agrega la arista (2,6)
+        g.agregar_arista(3,4)# Agrega la arista (3,4)
+        g.agregar_arista(3, 9)# Agrega la arista (3, 9)
+        g.agregar_arista(4, 9)# Agrega la arista (4, 9)
+        g.agregar_arista(5, 7)# Agrega la arista (5, 7)
+        g.agregar_arista(4,7)# Agrega la arista (4,7)
+        g.agregar_arista(6,7)# Agrega la arista ((6,7)
+        g.agregar_arista(6,8)# Agrega la arista (6,8)
+        g.agregar_arista(7,8)# Agrega la arista (7,8)
+        g.agregar_arista(8,9)# Agrega la arista (8,9)
+        g.agregar_arista(7,9)# Agrega la arista (7,9)
+        g.agregar_arista(9,10)# Agrega la arista (9,10)
+        g.agregar_arista(10, 11)# Agrega la arista (10, 11)
+        g.agregar_arista(10, 12)# Agrega la arista (10, 12)
+        g.agregar_arista(10, 13)# Agrega la arista (10, 13)
+        g.agregar_arista(11, 12)# Agrega la arista (11, 12)
+        g.agregar_arista(11, 14)# Agrega la arista (11, 14)
+        g.agregar_arista(12, 13)# Agrega la arista (12, 13)
+        g.agregar_arista(12, 15)# Agrega la arista (12, 15)
+        g.agregar_arista(13, 16)# Agrega la arista (13, 16)
+        g.agregar_arista(14, 15)# Agrega la arista (14, 15)
+        g.agregar_arista(14, 17)# Agrega la arista (14, 17)
+        g.agregar_arista(14, 18)# Agrega la arista (14, 18)
+        g.agregar_arista(15, 16)# Agrega la arista (15, 16)
+        g.agregar_arista(15, 19)# Agrega la arista (15, 19)
+        g.agregar_arista(16, 19)# Agrega la arista (16, 19)
     
         # Imprime la lista de adyacencia en el formulario del nodo
         g.imprimir_lista_adyacencia()
     
-        #print ("A continuación se muestra el primer recorrido en anchura"
-                    #" (empezando por el vértice 0)")
-        camino_objetivo = g.bfs(nodo_inicio, nodo_objetivo)#
-        print(camino_objetivo)#
+        #Se imprime el camino de la ruta entre los puntos de interes
+        camino_objetivo = g.bfs(nodo_inicio, nodo_objetivo)
+        #Se imprime los puntos
+        print(camino_objetivo)
