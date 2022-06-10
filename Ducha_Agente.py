@@ -209,7 +209,7 @@ def ducha ():
                 print("Sin acción. Costo actual "+str(cost))
     
     #Opcion ducha 2
-    elif ducha == 'ducha2':
+    elif ducha == 'Ducha2':
         segundo_estado = input("Defina el otro estado de la Ducha1: ")
         tercer_estado = input("Defina el otro estado de la Ducha3: ")
         cuarto_estado = input("Defina el otro estado de la Ducha4: ")
@@ -815,7 +815,7 @@ def ducha ():
                 print("Sin acción. Costo actual "+str(cost))
 
 #Ducha 5
-    if ducha == 'ducha5':
+    if ducha == 'Ducha5':
         segundo_estado = input("Defina el otro estado de la Ducha1: ")
         tercer_estado = input("Defina el otro estado de la Ducha2: ")
         cuarto_estado = input("Defina el otro estado de la Ducha3: ")
@@ -1017,7 +1017,7 @@ def ducha ():
                 print("Sin acción. Costo actual "+str(cost))
 
 #Ducha 6
-    if ducha == 'ducha6':
+    if ducha == 'Ducha6':
         segundo_estado = input("Defina el otro estado de la Ducha1: ")
         tercer_estado = input("Defina el otro estado de la Ducha2: ")
         cuarto_estado = input("Defina el otro estado de la Ducha3: ")
@@ -1220,7 +1220,7 @@ def ducha ():
 
 
 #Ducha 7
-    if ducha == 'ducha7':
+    if ducha == 'Ducha7':
         segundo_estado = input("Defina el otro estado de la Ducha1: ")
         tercer_estado = input("Defina el otro estado de la Ducha2: ")
         cuarto_estado = input("Defina el otro estado de la Ducha3: ")
