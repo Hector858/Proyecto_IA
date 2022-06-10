@@ -4,8 +4,25 @@ def ducha ():
     'Ducha4' : '0', 'Ducha5' : '0', 'Ducha6' : '0', 'Ducha7' : '0', }
     cost=0
 
-    ducha = input("Escriba en que ducha se encuentra: ")
-    estado = input("Defina el estado de la " +ducha+": ")
+    print("\n************************************************************")
+    print("                   --Instrucciones--                          \n")
+    print("             Existen 7 locaciones de duchas               \n\n---Ducha1, Ducha2, Ducha3, Ducha4, Ducha5, Ducha6, Ducha7---\n")
+    print("                    Existen 2 estados               \n\n     ---0 y 1. Donde 0 es encendido y 1 es apagado---\n")
+    print("************************************************************\n")
+
+    while True:
+            try:
+                ducha = input("Escriba en que ducha se encuentra: ")
+                estado = input("Defina el estado de la " +ducha+": ")
+            except ValueError:
+                print("Debes ingresar bien los datos")
+                continue
+            if (ducha != "Ducha1" or ducha != "Ducha2" or ducha != "Ducha3" or ducha != "Ducha4" or ducha != "Ducha5"
+            or ducha != "Ducha6" or ducha != "Ducha7" or estado != "1" or estado != "0"):
+                print("Se debe ingresar los datos segun las instrucciones establecidos")
+                continue
+            else:
+                break 
     
     if ducha == 'Ducha1':
         segundo_estado = input("Defina el otro estado de la Ducha2: ")
