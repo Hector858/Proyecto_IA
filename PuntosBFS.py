@@ -76,7 +76,7 @@ class Grafo:
                    diccionario: list
                         Almacena el listado de los puntos de interes
                 '''
-                self.m_diccionario = diccionario
+                self.m_diccionario = diccionario#Se define el diccionario
                 self.m_numero_de_nodos = numero_de_nodos#El número de nodos
                 self.m_nodos = range(self.m_numero_de_nodos)#genera un rango del número de nodos
 		
@@ -152,14 +152,14 @@ class Grafo:
                 #Inicializa la cola del grafo
                 cola = Queue()
 
-                # Colcoa el nodo inicial a la cola
+                # Coloca el nodo inicial a la cola
                 cola.put(nodo_inicio)
                 # Agrega el nodo inicial a la lista visitada
                 visitado.add(nodo_inicio)
                 
                 # el nodo de inicio no tiene padres
                 padre=dict()#Se define el nodo padre de tipo mapa que asocia claves y valores
-                #No tiene nodo padre el nodo de inicio
+                #No tiene nodo padre el nodo de inicio va a ser el padre
                 padre[nodo_inicio]=None
                 #El camino esta vacio
                 camino_encontrado = False
@@ -181,7 +181,8 @@ class Grafo:
                                 if siguiente_nodo not in visitado:
                                         #Coloca el siguiente nodo a la cola
                                         cola.put(siguiente_nodo)
-                                        padre[siguiente_nodo] = nodo_actual#
+                                        #El siguiente nodo se convierte en el nodo actual
+                                        padre[siguiente_nodo] = nodo_actual
                                         #Agregar el siguiente nodo a la lista de nodos visitados
                                         visitado.add(siguiente_nodo)
                 #Reconstrucción de ruta
@@ -207,7 +208,7 @@ if __name__ == "__main__":
         '''
                 Main de la clase Grafo.
         
-                Imprime el diccionario con el recorrido y muestra el recorrido y el camino
+                Imprime el diccionario con el recorrido, muestra el recorrido y el camino
                 más para llegar al objetivo
         
         '''
@@ -248,7 +249,7 @@ if __name__ == "__main__":
                         #Continua con el proceso
                         continue
                 #Condición para no pasar del rango de números
-                if (nodo_inicio<=0 or nodo_inicio>=19 or nodo_objetivo<=0 or nodo_objetivo>=19):
+                if (nodo_inicio<0 or nodo_inicio>19 or nodo_objetivo<0 or nodo_objetivo>19):
                         #Indica que esta fuera del rango
                         print("Numero fuera de rango")
                         continue
