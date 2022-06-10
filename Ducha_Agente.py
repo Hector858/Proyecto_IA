@@ -7,17 +7,8 @@ import sys
 #Se crea la funcion ducha
 def ducha ():
     """
-    funcion que define a una ducha 
-    
-    ...
-    
-    Parámetros:
-    -----------
-    estado objetivo : Strint
-        Objetivo de la ducha
-    estado: strint
-        Estados de la ducha
-    
+    funcion que define a una ducha inteligente 
+    para el encendido y apagado por sensor
     """
     #inicializando el ascensor
     #0 indica encendido y 1 indica apagado
