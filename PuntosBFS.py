@@ -1,5 +1,8 @@
 #Se incorpora la librería
+from ast import Break
+from asyncio.windows_events import NULL
 from queue import Queue
+from re import L
 
 #Se crea la clase Mapa
 class Grafo:
@@ -176,8 +179,7 @@ class Grafo:
                                 objetivo.append(padre[nodo_objetivo])#
                                 nodo_objetivo=padre[nodo_objetivo]#
                         objetivo.reverse()#
-                return objetivo#
-        
+                return objetivo#   
 #Main de la clase
 if __name__ == "__main__":
         
@@ -187,12 +189,31 @@ if __name__ == "__main__":
                 Imprime los nodos nodos asignados y muestra el recorrido.
         
         '''
+        g = Grafo(13, dirigido=False)
         print("Los puntos turisticos de Santo Domingo de su posible interes son los siguientes: ")
-        nodo_inicio = int(input("Ingrese un punto el punto Turistico al que se encuentra: "))
-        nodo_objetivo =int(input("Ingrese un punto el punto Turistico al que se se dirije: "))
+        print("Parque Acuático el Pulpo de Santo: 0  Parque acuatico El Pulpo: 1  Tinalandia Lodge: 2")
+        print("Río Mapalí: 3  San Gabriel del Baba: 4  Cerro Bombolí: 5")
+        print("Jardín Botánico Padre Julio Marrero: 6  Río Otongo: 7  Río Cajones Chico: 8")
+        print("Río Aquepí: 9  Tolón Pelé: 10  Vía Aventura: 11")
+        print("Awakenings Ayahuasca Retreats:  12  Parque de la Juventud y la Familia: 13  Parque Zaracay: 14")
+        print("Parque Natural Jelén Tenka: 15  Santo Domingo de los Tsáchilas La Concordia:  16")
+        print("Balneario Las Vegas de Julio Moreno: 17  Monumento Monseñor Emilio Sthele:  18")
+        print("Monumento Del Indio Colorado: 19")
+        
+        while True:
+                try:
+                        nodo_inicio = int(input("Ingrese un punto el punto Turistico al que se encuentra: "))
+                        nodo_objetivo =int(input("Ingrese un punto el punto Turistico al que se se dirije: "))
+                except ValueError:
+                        print("Debes escribir un número. Intente De nuevo")
+                        continue
+                
+                if (nodo_inicio>=0 and nodo_inicio<=13) and (nodo_objetivo>=0 and nodo_objetivo<=13):
+                        print("Haz colocado mal un punto")
+                        break
+  
         # Crea una instancia de la clase "Grafo"
         # Este grafo es no dirigido y tiene 5 nodos
-        g = Grafo(13, dirigido=False)
     
         # Agrega las aristas del grafo
         g.agregar_arista(0,1)# Agrega la arista (0,1) con peso=1
