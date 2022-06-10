@@ -189,17 +189,20 @@ if __name__ == "__main__":
                 Imprime los nodos nodos asignados y muestra el recorrido.
         
         '''
-        g = Grafo(13, dirigido=False)
+        # Crea una instancia de la clase "Grafo"
+        # Este grafo es no dirigido y tiene 5 nodos
+        g = Grafo(20, dirigido=False)
+        #Se muestran las opciones para ingresar y reslizar el recorrido para llegar al objetivo
         print("Los puntos turisticos de Santo Domingo de su posible interes son los siguientes: ")
-        print("Parque Acuático el Pulpo de Santo: 0  Parque acuatico El Pulpo: 1  Tinalandia Lodge: 2")
-        print("Río Mapalí: 3  San Gabriel del Baba: 4  Cerro Bombolí: 5")
-        print("Jardín Botánico Padre Julio Marrero: 6  Río Otongo: 7  Río Cajones Chico: 8")
-        print("Río Aquepí: 9  Tolón Pelé: 10  Vía Aventura: 11")
-        print("Awakenings Ayahuasca Retreats:  12  Parque de la Juventud y la Familia: 13  Parque Zaracay: 14")
-        print("Parque Natural Jelén Tenka: 15  Santo Domingo de los Tsáchilas La Concordia:  16")
-        print("Balneario Las Vegas de Julio Moreno: 17  Monumento Monseñor Emilio Sthele:  18")
-        print("Monumento Del Indio Colorado: 19")
-        
+        print("Parque Acuático el Pulpo de Santo: 0  Balneario Las Vegas de Julio Moreno: 1  Río Aquepí: 2")
+        print("Parque acuatico El Pulpo: 3  Tinalandia Lodge: 4  Río Otongo: 5")
+        print("Río Mapalí: 6  Awakenings Ayahuasca Retreats: 7  Tolón Pelé: 8")
+        print("San Gabriel del Baba: 9  Vía Aventura: 10  Monumento Del Indio Colorado: 11")
+        print("Parque Zaracay: :  12  Parque de la Juventud y la Familia: 13  Cerro Bombolí: 14")
+        print("Monumento Monseñor Emilio Sthele: 15  Parque Natural Jelén Tenka:  16")
+        print("Río Cajones Chico: 17  Jardín Botánico Padre Julio Marrero:  18")
+        print("Santo Domingo de los Tsáchilas La Concordia: 19")
+        #Pide los puntos
         while True:
                 try:
                         nodo_inicio = int(input("Ingrese un punto el punto Turistico al que se encuentra: "))
@@ -208,34 +211,42 @@ if __name__ == "__main__":
                         print("Debes escribir un número. Intente De nuevo")
                         continue
                 
-                if (nodo_inicio>=0 and nodo_inicio<=13) and (nodo_objetivo>=0 and nodo_objetivo<=13):
+                if (nodo_inicio>=0 and nodo_inicio<=19) and (nodo_objetivo>=0 and nodo_objetivo<=19):
                         print("Haz colocado mal un punto")
                         break
-  
-        # Crea una instancia de la clase "Grafo"
-        # Este grafo es no dirigido y tiene 5 nodos
     
         # Agrega las aristas del grafo
         g.agregar_arista(0,1)# Agrega la arista (0,1) con peso=1
         g.agregar_arista(0,2)# Agrega la arista (0,2) con peso=1
         g.agregar_arista(0,3)# Agrega la arista (1,2) con peso=1
-        g.agregar_arista(0,4)# Agrega la arista (1,4) con peso=1
-        g.agregar_arista(1,2)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(2,3)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(2,5)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(3, 4)
-        g.agregar_arista(3, 5)
-        g.agregar_arista(4, 5)
+        g.agregar_arista(1,5)# Agrega la arista (1,4) con peso=1
+        g.agregar_arista(1,8)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(2,6)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(3,4)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(3, 9)
+        g.agregar_arista(4, 9)
+        g.agregar_arista(5, 7)
         g.agregar_arista(4,7)# Agrega la arista (0,1) con peso=1
-        g.agregar_arista(4,8)# Agrega la arista (0,2) con peso=1
-        g.agregar_arista(5,9)# Agrega la arista (1,2) con peso=1
-        g.agregar_arista(5,10)# Agrega la arista (1,4) con peso=1
-        g.agregar_arista(6,12)# Agrega la arista (2,3) con peso=1
+        g.agregar_arista(6,7)# Agrega la arista (0,2) con peso=1
+        g.agregar_arista(6,8)# Agrega la arista (1,2) con peso=1
+        g.agregar_arista(7,8)# Agrega la arista (1,4) con peso=1
+        g.agregar_arista(8,9)# Agrega la arista (2,3) con peso=1
         g.agregar_arista(7,9)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(9,12)# Agrega la arista (2,3) con peso=1
-        g.agregar_arista(10, 12)
+        g.agregar_arista(9,10)# Agrega la arista (2,3) con peso=1
         g.agregar_arista(10, 11)
+        g.agregar_arista(10, 12)
+        g.agregar_arista(10, 13)
         g.agregar_arista(11, 12)
+        g.agregar_arista(11, 14)
+        g.agregar_arista(12, 13)
+        g.agregar_arista(12, 15)
+        g.agregar_arista(13, 16)
+        g.agregar_arista(14, 15)
+        g.agregar_arista(14, 17)
+        g.agregar_arista(14, 18)
+        g.agregar_arista(15, 16)
+        g.agregar_arista(15, 19)
+        g.agregar_arista(16, 19)
     
         # Imprime la lista de adyacencia en el formulario del nodo
         g.imprimir_lista_adyacencia()
