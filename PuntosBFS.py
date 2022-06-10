@@ -57,7 +57,7 @@ class Grafo:
         
         """
         # Constructor
-        def __init__(self, numero_de_nodos, dirigido=True):#self es uno mismo
+        def __init__(self, numero_de_nodos,diccionario, dirigido=True):#self es uno mismo
                 '''
                 Constructor de la clase Grafo
         
@@ -71,6 +71,7 @@ class Grafo:
                    dirigido: boolean 
                     Si el grafo es dirigido (true) o no dirigido (false)
                 '''
+                self.m_diccionario = diccionario
                 self.m_numero_de_nodos = numero_de_nodos#El número de nodos
                 self.m_nodos = range(self.m_numero_de_nodos)#genera un rango del número de nodos
 		
@@ -158,6 +159,7 @@ class Grafo:
                         # Saca el primer nodo de la cola
                         nodo_actual = cola.get()
                         #Imprime el nodo actual
+                        print(diccionario[nodo_actual], end = "\n ") 
                         
                         if nodo_actual == nodo_objetivo:#
                                 camino_encontrado = True#
@@ -189,9 +191,17 @@ if __name__ == "__main__":
                 Imprime los nodos nodos asignados y muestra el recorrido.
         
         '''
+        diccionario = {0:"Parque Acuático el Pulpo de Santo",1:"Balneario Las Vegas de Julio Moreno",
+                       2:"Río Aquepí",3:"Parque acuatico El Pulpo",4:"Tinalandia Lodge",5:"Río Otongo",
+                       6:"Río Mapalí",7:"Awakenings Ayahuasca Retreats",8:"Tolón Pelé",9:"San Gabriel del Baba",
+                       10:"Vía Aventura", 11:"Monumento Del Indio Colorado", 12:"Parque Zaracay",
+                       12:"Parque de la Juventud y la Familia", 13:"Parque de la Juventud y la Familia", 
+                       14:"Cerro Bombolí", 15:"Monumento Monseñor Emilio Sthele", 16:"Parque Natural Jelén Tenka",
+                       17:"Río Cajones Chico", 18:"Jardín Botánico Padre Julio Marrero",
+                       19:"Santo Domingo de los Tsáchilas La Concordia"}
         # Crea una instancia de la clase "Grafo"
         # Este grafo es no dirigido y tiene 5 nodos
-        g = Grafo(20, dirigido=False)
+        g = Grafo(20, diccionario, dirigido=False)
         #Se muestran las opciones para ingresar y reslizar el recorrido para llegar al objetivo
         print("Los puntos turisticos de Santo Domingo de su posible interes son los siguientes: ")
         print("Parque Acuático el Pulpo de Santo: 0  Balneario Las Vegas de Julio Moreno: 1  Río Aquepí: 2")
@@ -253,7 +263,5 @@ if __name__ == "__main__":
     
         #print ("A continuación se muestra el primer recorrido en anchura"
                     #" (empezando por el vértice 0)")
-    
-        camino_objetivo = []#
         camino_objetivo = g.bfs(nodo_inicio, nodo_objetivo)#
         print(camino_objetivo)#
