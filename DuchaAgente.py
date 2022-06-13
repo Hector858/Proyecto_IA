@@ -44,7 +44,7 @@ if __name__  == "__main__":
                                         print("El costo es: ", cost)
                                         break
                                     else:
-                                        print("Ingrese un estado valido")
+                                        print("Revise las instrucciones. Ingrese un estado valido")
                         #Ducha completada
                         print("Estado objetivo: ")
                         #imprime el estado objetivo actualizado
@@ -53,9 +53,9 @@ if __name__  == "__main__":
                         
                         break
                     else:
-                        print("El estado es invalido")
+                        print("Revise las instrucciones. El estado es invalido")
                 break
             else:
-                print("Ingrese una ubicacion valida, revise las instrucciones")
+                print("Revise las instrucciones. Debe ingresar una ubicacion valida. ")
     except Exception as e:
         print(e)
