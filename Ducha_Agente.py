@@ -36,9 +36,6 @@ def ducha():
     #se ingresa el estado de la ducha 0/1
     estado = input("Defina el estado de la " + ducha+": ")
 
-<<<<<<< HEAD
-    #Realia la condición. Si ducha es igual al parametro establecido
-=======
     #Realiza un bucle
     while True:
             try:
@@ -62,7 +59,6 @@ def ducha():
                 break 
 
     #Realia la condición. Si ducha es igual al parametro establecido 
->>>>>>> 3f357dc7a76b3196664a72f57c672a3a27a1c83a
     if ducha == 'Ducha1':
 
         # Se estabelce el otro etado de la sigiente ducha
