@@ -46,7 +46,7 @@ def ducha ():
                 continue
             #Si valor de ducha es diferente al valor estavlecido manda alerta
             if (ducha != "Ducha1" and ducha != "Ducha2" and ducha != "Ducha3" and ducha != "Ducha4" and ducha != "Ducha5"
-            and ducha != "Ducha6" and ducha != "Ducha7" and estado != "1" and estado != "0"):
+            and ducha != "Ducha6" and ducha != "Ducha7" or estado != "1" and estado != "0"):
                 #Alerta por ingresar mal un requerimiento 
                 print("Se debe ingresar los datos segun las instrucciones establecidos")
                 continue
