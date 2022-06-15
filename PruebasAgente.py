@@ -12,7 +12,7 @@ class TestPuertaInteligente(unittest.TestCase):
         test_puerta(): Método que rebisa la ducha inteligente.
     """
 
-    def ducha_datosSinError(self):
+    def test_ducha_datosSinError(self):
         """
         Método que prueba la ducha inteligente con datos sin error.
         """
@@ -20,28 +20,15 @@ class TestPuertaInteligente(unittest.TestCase):
         # Se crea el diccionario con las ubicaciones de la puerta.
         diccionarioUbicaciones = {"Ducha1": "0", "Ducha2": "0", "Ducha3": "0", "Ducha4": "0", "Ducha5": "0", "Ducha6": "0", "Ducha7": "0"}
         
-
         # Se agrega el estadosDucha la ubicación, estado, costo
-        self.assertEqual(estadosDucha('Ducha1', '1', 0,  diccionarioUbicaciones), 1)
-        # Se agrega el estado la ubicación, estado, costo
-        self.assertEqual(estadosDucha('Ducha3', '0', 0, diccionarioUbicaciones), 0)
-        # Se agrega el estado la ubicación, estado, costo
-        self.assertEqual(estadosDucha('Ducha7', '1', 0,  diccionarioUbicaciones), 0)
+        self.assertEqual(estadosDucha(diccionarioUbicaciones, 0, 'Ducha1', '0'), 0) 
+        # Se agrega el estadosDucha la ubicación, estado, costo
+        self.assertEqual(estadosDucha(diccionarioUbicaciones, 0, 'Ducha3', '1'), 1)
+        # Se agrega el estadosDucha la ubicación, estado, costo
+        self.assertEqual(estadosDucha(diccionarioUbicaciones, 1, 'Ducha7', '1'), 2) 
+          
         
-    def ducha_valoresIncorrectos(self):
-        """
-        Este método testea la puerta inteligente con valores erroneos.
-        """
 
-        # Se crea el diccionario con las ubicación de las duchas
-        diccionarioUbicaciones = {"Ducha1": "0", "Ducha2": "0", "Ducha3": "0", "Ducha4": "0", "Ducha5": "0", "Ducha6": "0", "Ducha7": "0"}
-
-        # Se agrega el estado la ubicación, estado, costo
-        self.assertFalse(estadosDucha('Ducha1', '1', 0,  diccionarioUbicaciones), 3)
-        # Se agrega el estado la ubicación, estado, costo
-        self.assertFalse(estadosDucha('Ducha3', '6', 0, diccionarioUbicaciones), 1)
-        # Se agrega el estado la ubicación, estado, costo
-        self.assertFalse(estadosDucha('Ducha7', '1', 0, diccionarioUbicaciones), 5)
 
         # Se ejecuta las pruebas. 
 if __name__ == '__main__':
