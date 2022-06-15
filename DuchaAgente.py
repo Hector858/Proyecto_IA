@@ -35,7 +35,7 @@ def estadosDucha(estado_objetivo, cost, ubicacion, estado):
             print("La ducha esta encendida")
             #Retorna el costo actual de todas las acciones realizadas por la ducha
             return cost
-        #Si el esatdo de la ducha es 0 (esat encendida)
+        #Si el esatdo de la ducha es 0 (esta encendida)
         else:
             #Imprime que la ducha esta encendida
             print("La ducha esta encendida")
