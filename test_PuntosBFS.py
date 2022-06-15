@@ -32,7 +32,7 @@ class TestGrafo(unittest.TestCase):
         
         self.assertEquals(g.bfs(1, 9), ['Balneario Las Vegas de Julio Moreno', 'Tolón Pelé', 'San Gabriel del Baba'])
         self.assertEquals(g.bfs(0, 6), ['Parque Acuático el Pulpo de Santo', 'Río Aquepí', 'Río Mapalí'])
-        self.assertEquals(g.bfs(3, 12), ['Parque acuatico El Pulpo', 'San Gabriel del Baba', 'Vía Aventura', 'Parque de la Juventud y la Familia'])
+        self.assertEquals(g.bfs(3, 14), ['Parque acuatico El Pulpo', 'San Gabriel del Baba', 'Vía Aventura', 'Monumento Del Indio Colorado', 'Cerro Bombolí'])
         
 # Ejecucion de las pruebas.
 if __name__ == '__main__':

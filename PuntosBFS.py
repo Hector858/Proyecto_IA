@@ -343,7 +343,7 @@ Imprime los nodos nodos asignados y muestra el recorrido
                 print("Río Mapalí: 6                             | Awakenings Ayahuasca Retreats: 7                | Tolón Pelé: 8")
                 print("San Gabriel del Baba: 9                   | Vía Aventura: 10                                | Monumento Del Indio Colorado: 11")
                 print("Parque Zaracay: :  12                     | Parque de la Juventud y la Familia: 13          | Cerro Bombolí: 14")
-                print("Monumento Monseñor Emilio Sthele: 15      | Parque Natural Jelén Tenka:  16                 |Río Cajones Chico: 17 ")
+                print("Monumento Monseñor Emilio Sthele: 15      | Parque Natural Jelén Tenka:  16                 | Río Cajones Chico: 17 ")
                 print("Jardín Botánico Padre Julio Marrero:  18  | Santo Domingo de los TsáchilasLa Concordia: 19  |")
                 
 #Main del programa
@@ -363,8 +363,8 @@ if __name__ == "__main__":
                        2:"Río Aquepí",3:"Parque acuatico El Pulpo",4:"Tinalandia Lodge",5:"Río Otongo",
                        6:"Río Mapalí",7:"Awakenings Ayahuasca Retreats",8:"Tolón Pelé",9:"San Gabriel del Baba",
                        10:"Vía Aventura", 11:"Monumento Del Indio Colorado", 12:"Parque Zaracay",
-                       12:"Parque de la Juventud y la Familia", 13:"Parque de la Juventud y la Familia", 
-                       14:"Cerro Bombolí", 15:"Monumento Monseñor Emilio Sthele", 16:"Parque Natural Jelén Tenka",
+                       13:"Parque de la Juventud y la Familia", 14:"Cerro Bombolí", 
+                       15:"Monumento Monseñor Emilio Sthele", 16:"Parque Natural Jelén Tenka",
                        17:"Río Cajones Chico", 18:"Jardín Botánico Padre Julio Marrero",
                        19:"Santo Domingo de los Tsáchilas La Concordia"}
         # Crea una instancia de la clase "Grafo"
