@@ -183,8 +183,6 @@ Imprime los nodos nodos asignados y muestra el recorrido
                 while not cola.empty():
                         # Saca el primer nodo de la cola
                         nodo_actual = cola.get()
-                        #Imprime el diccionario del nodo actual
-                        print(diccionario[nodo_actual], end = "\n ") 
                         #Si el nodo actual es el nodo objetivo se acaba la busqueda
                         if nodo_actual == nodo_objetivo:
                                 #indica que se acabo la busqueda
@@ -200,16 +198,19 @@ Imprime los nodos nodos asignados y muestra el recorrido
                                         padre[siguiente_nodo] = nodo_actual
                                         #Agregar el siguiente nodo a la lista de nodos visitados
                                         visitado.add(siguiente_nodo)
-                #Reconstrucción de ruta
-                objetivo=[]#Lista del objetivo
+                        #Imprime el diccionario del nodo actual
+                        #print(diccionario[nodo_actual], end = "\n ") 
+                #Recontrucción de ruta
+                objetivo=[]      
                 #Si el camino encontrado se ecuentra
                 if camino_encontrado:
                         #Se agrega el nodo objetivo
-                        objetivo.append(nodo_objetivo)
+                        #objetivo.append(nodo_objetivo)
+                        objetivo.append(self.m_diccionario[nodo_objetivo])
                         #Mientras el nodo padre no sea el nodo objetivo
                         while padre[nodo_objetivo] is not None:
                                 #Se agrega el nodo al lista el nodo padre
-                                objetivo.append(padre[nodo_objetivo])#
+                                objetivo.append(self.m_diccionario[padre[nodo_objetivo]])#
                                 #Se define el nodo obejtivo como el padre
                                 nodo_objetivo=padre[nodo_objetivo]#
                         #Realiza un proceso de reversapara rastear el camino hasta el nodo inicio
@@ -371,6 +372,8 @@ if __name__ == "__main__":
         g = Grafo(20, diccionario, dirigido=False)
         #Imprimer las opciones
         g.texto()
+        #lista del camino
+        camino_objetivo=[]
         #Realiza un bucle para ingresar bien los datos de las opciones que quiere realizar
         while True:
                 #Implementa un try except para evitar que se ingresan otro tipo de datos
@@ -394,7 +397,7 @@ if __name__ == "__main__":
                                 #Se imprime el camino de la ruta entre los puntos de interes
                                 camino_objetivo = g.bfs(ingreso_inicio, ingreso_objetivo)
                                 #Se imprime los puntos
-                                print(camino_objetivo)   
+                                print(f"El Camino más optimo para es: \n",camino_objetivo)    
                                 continue    
                         elif opc==3:
                                 print("Saliendo del programa...")
