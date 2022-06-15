@@ -53,7 +53,7 @@ if __name__  == "__main__":
     #Segundo control de excepciones
     try:
         #Creación del diccionario con las 7 ubicaciones de la ducha.
-        diccionarioUbicaciones = {"Ducha1": "0", "Ducha2": "0", "Ducha3": "0", "Ducha4": "0", "Ducha5": "0", "Ducha6": "0", "Ducha7": "0",}
+        diccionarioUbicaciones = {"Ducha1": "0", "Ducha2": "0", "Ducha3": "0", "Ducha4": "0", "Ducha5": "0", "Ducha6": "0", "Ducha7": "0"}
         #Inicializamos el costo
         cost = 0
         #Bucle para repetir el ingreso de un  dato mal especificdo por el usuario
@@ -96,7 +96,7 @@ if __name__  == "__main__":
                                         print("El costo es: ", cost)
                                         #Termina de correr el bucle para el ingreso de un estado valido
                                         break
-                                    #Si el esatdo ingresado no es correcto
+                                    #Si el estado ingresado no es correcto
                                     else:
                                         #Imprime solicitud de revisión de instrucciones y el nuevo ingreso de un esatdo valido
                                         print("Revise las instrucciones. Ingrese un estado valido")
